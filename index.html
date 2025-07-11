@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Completa de GeoGebra - Todas las Especialidades</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .sidebar-hidden { transform: translateX(-100%); }
+        .content-expanded { margin-left: 0; }
+        .video-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .tab-button.active { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .progress-indicator { background: linear-gradient(to right, #4ade80, #fbbf24, #f87171); }
+        .difficulty-basic { border-left: 4px solid #4ade80; }
+        .difficulty-intermediate { border-left: 4px solid #fbbf24; }
+        .difficulty-advanced { border-left: 4px solid #f87171; }
+        .section-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 shadow-lg fixed w-full top-0 z-50">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <button id="toggleSidebar" class="lg:hidden text-white hover:text-gray-200">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <h1 class="text-xl lg:text-2xl font-bold flex items-center">
+                    <i class="fas fa-calculator mr-2"></i>
+                    Guía Completa de GeoGebra
+                </h1>
+            </div>
+            <div class="hidden md:flex items-center space-x-4">
+                <span class="text-sm opacity-90">Aprende desde básico hasta avanzado</span>
+                <i class="fas fa-graduation-cap text-xl"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed left-0 top-16 w-80 h-full bg-white shadow-xl transform transition-transform duration-300 z-40 overflow-y-auto">
+        <div class="p-6">
+            <div class="mb-6">
+                <h2 class="text-lg font-bold text-gray-800 mb-2">Especialidades de GeoGebra</h2>
+                <div class="progress-indicator h-1 rounded-full mb-4"></div>
+                <p class="text-sm text-gray-600">Contenido organizado progresivamente</p>
+            </div>
+            
+            <nav class="space-y-2">
+                <button class="tab-button w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors flex items-center space-x-3" data-tab="vista-grafica">
+                    <i class="fas fa-chart-line text-blue-500"></i>
+                    <span>Vista Gráfica</span>
+                    <span class="ml-auto text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">22 videos</span>
+                </button>
+                
+                <button class="tab-button w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors flex items-center space-x-3" data-tab="vista-algebraica">
+                    <i class="fas fa-calculator text-purple-500"></i>
+                    <span>Vista Algebraica</span>
+                    <span class="ml-auto text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">22 videos</span>
+                </button>
+                
+                <button class="tab-button w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors flex items-center space-x-3" data-tab="vista-3d">
+                    <i class="fas fa-cube text-red-500"></i>
+                    <span>Vista 3D</span>
+                    <span class="ml-auto text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">22 videos</span>
+                </button>
+                
+                <button class="tab-button w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors flex items-center space-x-3" data-tab="hoja-calculo">
+                    <i class="fas fa-table text-green-500"></i>
+                    <span>Hoja de Cálculo</span>
+                    <span class="ml-auto text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">22 videos</span>
+                </button>
+                
+                <button class="tab-button w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors flex items-center space-x-3" data-tab="vista-cas">
+                    <i class="fas fa-brain text-orange-500"></i>
+                    <span>Vista CAS</span>
+                    <span class="ml-auto text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">22 videos</span>
+                </button>
+                
+                <button class="tab-button w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors flex items-center space-x-3" data-tab="avanzado">
+                    <i class="fas fa-rocket text-pink-500"></i>
+                    <span>Técnicas Avanzadas</span>
+                    <span class="ml-auto text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-full">22 videos</span>
+                </button>
+                
+                <div class="border-t pt-4 mt-4">
+                    <h3 class="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">Especialidades Avanzadas</h3>
+                    
+                    <button class="tab-button w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors flex items-center space-x-3" data-tab="modelacion-matematica">
+                        <i class="fas fa-function text-indigo-500"></i>
+                        <span>Modelación Matemática</span>
+                        <span class="ml-auto text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">22 videos</span>
+                    </button>
+                    
+                    <button class="tab-button w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors flex items-center space-x-3" data-tab="modelacion-fisica">
+                        <i class="fas fa-atom text-cyan-500"></i>
+                        <span>Modelación Física</span>
+                        <span class="ml-auto text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">19 videos</span>
+                    </button>
+                    
+                    <button class="tab-button w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors flex items-center space-x-3" data-tab="curvas-parametricas">
+                        <i class="fas fa-wave-square text-yellow-500"></i>
+                        <span>Curvas Paramétricas</span>
+                        <span class="ml-auto text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">22 videos</span>
+                    </button>
+                    
+                    <button class="tab-button w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors flex items-center space-x-3" data-tab="curvas-multivariables">
+                        <i class="fas fa-project-diagram text-teal-500"></i>
+                        <span>Curvas Multivariables</span>
+                        <span class="ml-auto text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded-full">22 videos</span>
+                    </button>
+                    
+                    <button class="tab-button w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors flex items-center space-x-3" data-tab="superficies-revolucion">
+                        <i class="fas fa-globe text-emerald-500"></i>
+                        <span>Superficies de Revolución</span>
+                        <span class="ml-auto text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded-full">22 videos</span>
+                    </button>
+                    
+                    <button class="tab-button w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors flex items-center space-x-3" data-tab="construccion-solidos">
+                        <i class="fas fa-shapes text-rose-500"></i>
+                        <span>Construcción de Sólidos</span>
+                        <span class="ml-auto text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded-full">22 videos</span>
+                    </button>
+                </div>
+                
+                <div class="border-t pt-4 mt-4">
+                    <button class="tab-button w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors flex items-center space-x-3" data-tab="libros-geogebra">
+                        <i class="fas fa-book text-amber-500"></i>
+                        <span>📚 Libros con GeoGebra</span>
+                        <span class="ml-auto text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full">22 videos</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="mainContent" class="ml-80 pt-16 p-6 transition-all duration-300">
+        <div id="content-area">
+            <!-- Vista Gráfica -->
+            <div id="vista-grafica" class="tab-content">
+                <div class="section-header text-white p-6 rounded-lg mb-6">
+                    <h2 class="text-3xl font-bold mb-2">
+                        <i class="fas fa-chart-line mr-3"></i>Vista Gráfica de GeoGebra
+                    </h2>
+                    <p class="text-lg opacity-90">Aprende a usar la vista gráfica desde lo básico hasta técnicas avanzadas de graficación</p>
+                    <div class="mt-4 flex items-center space-x-4">
+                        <span class="difficulty-basic bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">Básico</span>
+                        <span class="difficulty-intermediate bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">Intermedio</span>
+                        <span class="difficulty-advanced bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm">Avanzado</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="video-card difficulty-basic bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full font-medium">BÁSICO</span>
+                            <span class="text-xs text-gray-500">2:41</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Geogebra: Vista gráfica</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Vamos a ver la vista gráfica vamos a trabajar con la opción elige y mueve que nos va a permitir mover nuestra vista gráfica</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Soporte Villa</span>
+                            <a href="https://www.youtube.com/watch?v=HpQp1bF-IEM" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-basic bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full font-medium">BÁSICO</span>
+                            <span class="text-xs text-gray-500">6:30</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Geogebra: vista gráfica</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">En este tutorial presento algunos ajustes básicos que se pueden hacer en la vista gráfica de Geogebra.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Luchito y las Matemáticas</span>
+                            <a href="https://www.youtube.com/watch?v=rk0A4XyZdlU" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-intermediate bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full font-medium">INTERMEDIO</span>
+                            <span class="text-xs text-gray-500">21:32</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">🟢 Cómo graficar FUNCIONES | Curso BÁSICO GeoGebra</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Aprende cómo GRAFICAR una FUNCIÓN con GeoGebra de manera fácil y rápida. En este video tutorial te muestro PASO A PASO</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Sergio Rubio-Pizzorno</span>
+                            <a href="https://www.youtube.com/watch?v=tZOTM9YkVmw" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-basic bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full font-medium">BÁSICO</span>
+                            <span class="text-xs text-gray-500">8:21</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">GeoGebra - Tutorial Básico 2025✅✅✅</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Herramientas digitales gratuitas para clases, graficar, geometría, pizarra interactiva y más</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Asesor Virtual Ricardo</span>
+                            <a href="https://www.youtube.com/watch?v=dak27u84W94" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">5:05</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Sólidos de Revolución con Geogebra | Método de discos</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Se describe como desarrollar o construir los sólidos de revolución y el cálculo del volumen por el método de discos</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Jaramáticas</span>
+                            <a href="https://www.youtube.com/watch?v=RIbkpzVl7x0" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-intermediate bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full font-medium">INTERMEDIO</span>
+                            <span class="text-xs text-gray-500">11:55</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">🟢 TUTORIAL BÁSICO Aprende a usar GeoGebra</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Estás buscando una manera FÁCIL y efectiva de APRENDER GeoGebra? ¡No busques más!</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Sergio Rubio-Pizzorno</span>
+                            <a href="https://www.youtube.com/watch?v=6FCHSZA-WuE" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vista Algebraica -->
+            <div id="vista-algebraica" class="tab-content hidden">
+                <div class="section-header text-white p-6 rounded-lg mb-6">
+                    <h2 class="text-3xl font-bold mb-2">
+                        <i class="fas fa-calculator mr-3"></i>Vista Algebraica de GeoGebra
+                    </h2>
+                    <p class="text-lg opacity-90">Domina la manipulación algebraica y el cálculo simbólico con GeoGebra</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="video-card difficulty-basic bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full font-medium">BÁSICO</span>
+                            <span class="text-xs text-gray-500">3:44</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Para que sirve la Vista Algebraica y La Barra de Entrada de GeoGebra</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Introducción básica a la vista algebraica de GeoGebra</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Laura Feliz</span>
+                            <a href="https://www.youtube.com/watch?v=ScAqWllOC-Y" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-intermediate bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full font-medium">INTERMEDIO</span>
+                            <span class="text-xs text-gray-500">10:53</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">GeoGebra: Configuración de la Vista Algebraica</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Video tutorial a cerca de cómo configurar la sección "Vista Algebraica", del software Geogebra.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Jaime Humberto Vera Aguirre</span>
+                            <a href="https://www.youtube.com/watch?v=B-0E3PngomY" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">18:36</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">🟢 Curso BÁSICO GeoGebra | ÁLGEBRA con GeoGebra CAS</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Resolver ejercicios con expresiones algebraicas muchas veces es complicado, ¡pero con GeoGebra esto ya no es un problema!</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Sergio Rubio-Pizzorno</span>
+                            <a href="https://www.youtube.com/watch?v=Sgaf_hHmrKk" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vista 3D -->
+            <div id="vista-3d" class="tab-content hidden">
+                <div class="section-header text-white p-6 rounded-lg mb-6">
+                    <h2 class="text-3xl font-bold mb-2">
+                        <i class="fas fa-cube mr-3"></i>Vista 3D de GeoGebra
+                    </h2>
+                    <p class="text-lg opacity-90">Explora el mundo tridimensional con construcciones y visualizaciones avanzadas</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="video-card difficulty-basic bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full font-medium">BÁSICO</span>
+                            <span class="text-xs text-gray-500">3:35</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Cómo crear FIGURAS 3D en GEOGEBRA - Curso básico de geogebrar</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Si desea crear figuras 3d utilizando la mejor herramienta para matemática, te invito a ver este vídeo</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Docente Pro</span>
+                            <a href="https://www.youtube.com/watch?v=a9HAahVyDM4" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-intermediate bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full font-medium">INTERMEDIO</span>
+                            <span class="text-xs text-gray-500">34:28</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">GeoGebra 3D. La Vista Gráfica 3D. Iniciación para Primaria.</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Videotutorial que ayuda a comenzar a trabajar con GeoGebra 3D. Contiene actividades sencillas que pueden hacerse en primaria</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Rafael Pérez Laserna</span>
+                            <a href="https://www.youtube.com/watch?v=LNo28THGWz0" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">4:55</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Vectores 3D en Geogebra</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Calculadora 3D Graficador 3D gratis de GeoGebra: grafica funciones 3D, grafica superficies y mucho más</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Jacob Piñataro</span>
+                            <a href="https://www.youtube.com/watch?v=GJYpYoUI104" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hoja de Cálculo -->
+            <div id="hoja-calculo" class="tab-content hidden">
+                <div class="section-header text-white p-6 rounded-lg mb-6">
+                    <h2 class="text-3xl font-bold mb-2">
+                        <i class="fas fa-table mr-3"></i>Hoja de Cálculo de GeoGebra
+                    </h2>
+                    <p class="text-lg opacity-90">Aprende a manejar datos, crear tablas y realizar análisis estadístico</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="video-card difficulty-basic bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full font-medium">BÁSICO</span>
+                            <span class="text-xs text-gray-500">6:20</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Video 1 (Geogebra hoja de calculo)</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Introducción básica al uso de la hoja de cálculo en GeoGebra</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">YBA</span>
+                            <a href="https://www.youtube.com/watch?v=FDtNcnsyxCY" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-intermediate bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full font-medium">INTERMEDIO</span>
+                            <span class="text-xs text-gray-500">12:37</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Geogebra. Iniciación para Primaria. Hoja de Cálculo.</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Actividades de iniciación para entender el funcionamiento de la hoja de cálculo en Geogebra.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Rafael Pérez Laserna</span>
+                            <a href="https://www.youtube.com/watch?v=bR3kLh00dzE" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">11:57</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">🟢 Curso BÁSICO GeoGebra 📊 ESTADÍSTICA con GeoGebra 📈</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Quieres hacer un análisis estadístico FÁCIL y RÁPIDO? Aprende cómo hacer ESTADÍSTICA en GeoGebra</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Sergio Rubio-Pizzorno</span>
+                            <a href="https://www.youtube.com/watch?v=48Q7bTTQ7Y4" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vista CAS -->
+            <div id="vista-cas" class="tab-content hidden">
+                <div class="section-header text-white p-6 rounded-lg mb-6">
+                    <h2 class="text-3xl font-bold mb-2">
+                        <i class="fas fa-brain mr-3"></i>Vista CAS (Cálculo Simbólico)
+                    </h2>
+                    <p class="text-lg opacity-90">Domina el cálculo simbólico avanzado con la potente herramienta CAS de GeoGebra</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="video-card difficulty-basic bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full font-medium">BÁSICO</span>
+                            <span class="text-xs text-gray-500">11:49</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Geogebra. Vista CAS</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">En este tutorial veremos como usar la vista CAS (cálculo simbólico) de geogebra.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">José Manuel Montoya Misas</span>
+                            <a href="https://www.youtube.com/watch?v=ForyWU9PDvQ" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-intermediate bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full font-medium">INTERMEDIO</span>
+                            <span class="text-xs text-gray-500">11:06</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Introducción a Geogebra CAS</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Una introducción elemental al uso de la herramienta Geogebra CAS.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Jose Luis Tabara Carbajo</span>
+                            <a href="https://www.youtube.com/watch?v=bZPgqnmxp3s" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">8:13</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Curso Geogebra - 06 CAS (parte 1) Botones</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Introducción a los comandos más frecuentes de la vista CAS de Geogebra. Factorización, derivación, integración.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Cursos Para Educarme</span>
+                            <a href="https://www.youtube.com/watch?v=dYgRdkTBKfQ" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Técnicas Avanzadas -->
+            <div id="avanzado" class="tab-content hidden">
+                <div class="section-header text-white p-6 rounded-lg mb-6">
+                    <h2 class="text-3xl font-bold mb-2">
+                        <i class="fas fa-rocket mr-3"></i>Técnicas Avanzadas de GeoGebra
+                    </h2>
+                    <p class="text-lg opacity-90">Lleva tus habilidades al siguiente nivel con técnicas profesionales y avanzadas</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">11:36</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Curso Geogebra - 09 Scripts y animaciones</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Introducción a lo que son los guiones (o scripts) de GeoGebra y cómo crear animaciones avanzadas</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Cursos Para Educarme</span>
+                            <a href="https://www.youtube.com/watch?v=vO50n1LKyHo" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">1:22:27</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Sesión 02: Geogebra Avanzado: Animación con Geogebra</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Geogebra Avanzado Animacion con GeoGebra Movimiento Parabólico con GeoGebra.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">INSTITUCIÓN EDUCATIVA ERNESTO VILLANUEVA MUÑOZ</span>
+                            <a href="https://www.youtube.com/watch?v=Teov0hwH9wI" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">18:57</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Curso Geogebra - 10 Construcción avanzada para presentar una clase</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Aprenderemos como hacer una construcción avanzada demostrando el teorema del valor medio para la integral.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Cursos Para Educarme</span>
+                            <a href="https://www.youtube.com/watch?v=BLwQLMWrLW8" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modelación Matemática -->
+            <div id="modelacion-matematica" class="tab-content hidden">
+                <div class="section-header text-white p-6 rounded-lg mb-6">
+                    <h2 class="text-3xl font-bold mb-2">
+                        <i class="fas fa-function mr-3"></i>Modelación Matemática con GeoGebra
+                    </h2>
+                    <p class="text-lg opacity-90">Aprende a crear modelos matemáticos para resolver problemas del mundo real</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="video-card difficulty-basic bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full font-medium">BÁSICO</span>
+                            <span class="text-xs text-gray-500">3:39</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Modelación Parte 1: ¿Cómo subir una imagen a Geogebra?</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">El siguiente video tutoral describe cómo subir una imagen a Geogebra y configurar su tamaño como inclinación.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Freddy Yesid Villamizar Araque</span>
+                            <a href="https://www.youtube.com/watch?v=zsLCd8HYCIQ" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-intermediate bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full font-medium">INTERMEDIO</span>
+                            <span class="text-xs text-gray-500">13:56</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Modelamiento matemático con GEOGEBRA / ¿De dónde salen las funciones?</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">En la presente cápsula de aprendizaje, podrás observar como se modela matemáticamente una situación</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Matematica Abierta</span>
+                            <a href="https://www.youtube.com/watch?v=sy8b9B4CJxE" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">1:37:12</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">#ClaseAbiertaGeoGebra Funciones como modelos matemáticos con GeoGebra</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Sabías que podemos construir modelos matemáticos a partir de la resolución de problemas contextualizados haciendo uso de GeoGebra</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Comunidad GeoGebra Latinoamericana</span>
+                            <a href="https://www.youtube.com/watch?v=6d_YWFed3Rw" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modelación Física -->
+            <div id="modelacion-fisica" class="tab-content hidden">
+                <div class="section-header text-white p-6 rounded-lg mb-6">
+                    <h2 class="text-3xl font-bold mb-2">
+                        <i class="fas fa-atom mr-3"></i>Modelación Física con GeoGebra
+                    </h2>
+                    <p class="text-lg opacity-90">Simula fenómenos físicos y crea modelos interactivos para la enseñanza</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="video-card difficulty-basic bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full font-medium">BÁSICO</span>
+                            <span class="text-xs text-gray-500">8:51</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">SIMULACIONES en GeoGebra 🚕 | 1- ¿COMO simular el MRU en GeoGebra? ✅</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">En este video aprenderás la forma de simular el movimiento rectilíneo uniforme en GeoGebra.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Math Vitae</span>
+                            <a href="https://www.youtube.com/watch?v=irC9yl0PtPs" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-intermediate bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full font-medium">INTERMEDIO</span>
+                            <span class="text-xs text-gray-500">24:01</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Fisica- Tiro Parabólico - Análisis con Geogebra - Crea tu propia simulación con Geogebra.</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">El video presenta una serie de pasos para crear tu propio simulación en Geogebra y de esta forma puedas apreciar mejor el tiro parabólico</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">OCTAVIO JAHAZIEL CERVANTES NIÑO</span>
+                            <a href="https://www.youtube.com/watch?v=rQTrtaVC_sU" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">37:01</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Creación en Geogebra de simulaciones de problemas de física general.</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Se muestra cómo crear, desde cero, una simulación de un avión que se desplaza horizontalmente, a cierta altura del suelo</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Miniaturas Físico-matemáticas</span>
+                            <a href="https://www.youtube.com/watch?v=ChSFeQvFpe4" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Curvas Paramétricas -->
+            <div id="curvas-parametricas" class="tab-content hidden">
+                <div class="section-header text-white p-6 rounded-lg mb-6">
+                    <h2 class="text-3xl font-bold mb-2">
+                        <i class="fas fa-wave-square mr-3"></i>Curvas Paramétricas con GeoGebra
+                    </h2>
+                    <p class="text-lg opacity-90">Domina la creación y análisis de curvas paramétricas en 2D y 3D</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="video-card difficulty-basic bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full font-medium">BÁSICO</span>
+                            <span class="text-xs text-gray-500">7:34</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Como graficar curvas paramétricas en geogebra (Tutorial en 2D)</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Turorial de cómo graficar curvas paramétricas en el plano (2D) en geogebra 6.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Matemáticas y Geogebra</span>
+                            <a href="https://www.youtube.com/watch?v=NwQ29v1lk1E" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-intermediate bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full font-medium">INTERMEDIO</span>
+                            <span class="text-xs text-gray-500">8:16</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">🟥 CÓMO GRAFICAR ECUACIONES PARAMÉTRICAS EN GEOGEBRA</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Como graficar ecuaciones parametricas en geogebra, graficar funciones parametricas en geogebra, graficar curvas parametricas</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">EL LENGUAJE DE LAS CIENCIAS</span>
+                            <a href="https://www.youtube.com/watch?v=7YrAfrcepgQ" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">11:06</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">TUTORIAL GEOGEBRA CURVAS PARAMÉTRICAS EN 3D 01</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">En este tutorial se evalúa la trayectoria de una partícula mediante su función posición en 3D, al utilizar funciones paramétricas</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Ingenium_UGG</span>
+                            <a href="https://www.youtube.com/watch?v=J78OyN2OVGk" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Curvas Multivariables -->
+            <div id="curvas-multivariables" class="tab-content hidden">
+                <div class="section-header text-white p-6 rounded-lg mb-6">
+                    <h2 class="text-3xl font-bold mb-2">
+                        <i class="fas fa-project-diagram mr-3"></i>Curvas Paramétricas Multivariables
+                    </h2>
+                    <p class="text-lg opacity-90">Explora curvas paramétricas complejas en múltiples variables y dimensiones</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="video-card difficulty-intermediate bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full font-medium">INTERMEDIO</span>
+                            <span class="text-xs text-gray-500">4:38</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">GGB Basics - 3D Functions, Curves and Surfaces</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Geogebra allows us to define three-dimensional functions 3d curves and surfaces in 3d so defining a function of two variables</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Grant Sander</span>
+                            <a href="https://www.youtube.com/watch?v=43RgPR0ck7k" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">44:22</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Multivariable Calculus by Steve Phelps</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Steve will provide clear explanations of the concepts and demonstrate how to use GeoGebra to build interactive models</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">GeoGebra</span>
+                            <a href="https://www.youtube.com/watch?v=os1p_FgDl-Q" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">6:49</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Working with Multivariable Functions in GeoGebra</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Tutorial avanzado sobre el trabajo con funciones multivariables en GeoGebra</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">MathIsGreatFun</span>
+                            <a href="https://www.youtube.com/watch?v=baKhMrLl42A" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Superficies de Revolución -->
+            <div id="superficies-revolucion" class="tab-content hidden">
+                <div class="section-header text-white p-6 rounded-lg mb-6">
+                    <h2 class="text-3xl font-bold mb-2">
+                        <i class="fas fa-globe mr-3"></i>Superficies de Revolución
+                    </h2>
+                    <p class="text-lg opacity-90">Crea y analiza superficies de revolución y sólidos complejos en 3D</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="video-card difficulty-basic bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full font-medium">BÁSICO</span>
+                            <span class="text-xs text-gray-500">5:05</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Sólidos de Revolución con Geogebra | Método de discos</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Se describe como desarrollar o construir los sólidos de revolución y el cálculo del volumen por el método de discos</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Jaramáticas</span>
+                            <a href="https://www.youtube.com/watch?v=RIbkpzVl7x0" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-intermediate bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full font-medium">INTERMEDIO</span>
+                            <span class="text-xs text-gray-500">14:25</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Cómo construir superficies o "sólidos" de revolución en Geogebra</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Se guía en cómo crear superficies o "sólidos" de revolución en Geogebra, de manera sencilla y directa</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Raulico Vlog</span>
+                            <a href="https://www.youtube.com/watch?v=O_kGIuR6tG0" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">1:12:19</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">#ClaseAbiertaGeoGebra Construcciones de sólidos de revolución con GeoGebra</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Te haz preguntado ¿cómo se construye un sólido de revolución con GeoGebra? En esta #ClaseAbiertaGeoGebra</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Comunidad GeoGebra Latinoamericana</span>
+                            <a href="https://www.youtube.com/watch?v=dZ3gf8xj3LM" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Construcción de Sólidos -->
+            <div id="construccion-solidos" class="tab-content hidden">
+                <div class="section-header text-white p-6 rounded-lg mb-6">
+                    <h2 class="text-3xl font-bold mb-2">
+                        <i class="fas fa-shapes mr-3"></i>Construcción de Sólidos
+                    </h2>
+                    <p class="text-lg opacity-90">Técnicas avanzadas para construir sólidos geométricos complejos</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="video-card difficulty-basic bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full font-medium">BÁSICO</span>
+                            <span class="text-xs text-gray-500">4:57</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Superficie de Revolución con GeoGebra</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Tutorial básico sobre la construcción de superficies de revolución con GeoGebra.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Sergio Darias</span>
+                            <a href="https://www.youtube.com/watch?v=DpdwqicKIWk" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-intermediate bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full font-medium">INTERMEDIO</span>
+                            <span class="text-xs text-gray-500">13:35</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">¿Cómo construir sólidos de revolución en GeoGebra?</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">En este vídeo explico cómo construir un sólido de revolución con GeoGebra dadas dos funciones implícitas</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">GEOMATH</span>
+                            <a href="https://www.youtube.com/watch?v=6LkdCQdPI0k" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">18:31</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">CÓMO GRAFICAR SÓLIDOS DE REVOLUCIÓN CON GEOGEBRA? 🤯🤔</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">En este vídeo te muestro la construcción de un sólido de revolución con GeoGebra de manera sencilla</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">GEOMATH</span>
+                            <a href="https://www.youtube.com/watch?v=vrhGhZFknoI" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Libros con GeoGebra -->
+            <div id="libros-geogebra" class="tab-content">
+                <div class="section-header text-white p-6 rounded-lg mb-6">
+                    <h2 class="text-3xl font-bold mb-2">
+                        <i class="fas fa-book mr-3"></i>📚 Libros Interactivos con GeoGebra
+                    </h2>
+                    <p class="text-lg opacity-90">Aprende a crear libros interactivos completos para la enseñanza matemática</p>
+                    <div class="mt-4 bg-white bg-opacity-20 p-4 rounded-lg">
+                        <h3 class="font-semibold mb-2">¿Qué son los Libros de GeoGebra?</h3>
+                        <p class="text-sm opacity-90">Los libros de GeoGebra son colecciones organizadas de actividades interactivas que permiten crear contenido educativo completo, desde lecciones básicas hasta cursos avanzados con evaluaciones integradas.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="video-card difficulty-basic bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full font-medium">BÁSICO</span>
+                            <span class="text-xs text-gray-500">4:04</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">6 Cómo crear un Libro GeoGebra</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Video de la serie Webcams, mates y GeoGebra. Introducción básica a la creación de libros.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">MAYRA LORENA DIAZ SOSA</span>
+                            <a href="https://www.youtube.com/watch?v=vZ4uQv871yA" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-basic bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full font-medium">BÁSICO</span>
+                            <span class="text-xs text-gray-500">2:43</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Cómo crear un libro en Geogebra 📎🔢↗️</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Tutorial paso a paso para crear tu primer libro de GeoGebra desde cero.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Ana Romero Girón</span>
+                            <a href="https://www.youtube.com/watch?v=WqUg0LimsAQ" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-intermediate bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full font-medium">INTERMEDIO</span>
+                            <span class="text-xs text-gray-500">10:08</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">GeoGebra actividades y libros</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">En este video se explica la diferencia entre una actividad, una construcción y un libro de GeoGebra.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Gustavo Aguilar</span>
+                            <a href="https://www.youtube.com/watch?v=8TxXeVnt2zQ" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-intermediate bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full font-medium">INTERMEDIO</span>
+                            <span class="text-xs text-gray-500">5:56</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">GeoGebra. Actividades. Libros</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Explicación de cómo crear actividades y libros, con GeoGebra. Tutorial completo y detallado.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Ángel Martínez</span>
+                            <a href="https://www.youtube.com/watch?v=9C4fwDrfIPU" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-intermediate bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full font-medium">INTERMEDIO</span>
+                            <span class="text-xs text-gray-500">12:27</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Crear libros y clases con GeoGebra #roberproff</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Tutorial completo sobre cómo crear libros interactivos y organizar clases virtuales con GeoGebra.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">roberproff</span>
+                            <a href="https://www.youtube.com/watch?v=2kue3h02wU0" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-intermediate bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full font-medium">INTERMEDIO</span>
+                            <span class="text-xs text-gray-500">4:52</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">2.2.2 Tutorial Applets GeoGebra: Organizando las actividades en libros</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Aprende a organizar tus actividades de GeoGebra en libros estructurados y profesionales.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Punto A Lado B</span>
+                            <a href="https://www.youtube.com/watch?v=lUNGyJy0XjI" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">20:31</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">#64 Creamos un libro GeoGebra</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Tutorial avanzado para crear libros complejos y profesionales con GeoGebra. Incluye técnicas avanzadas.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">PILDORAS GEOGEBRA</span>
+                            <a href="https://www.youtube.com/watch?v=xPPFydoyBmQ" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">1:40:36</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Seminario docentes Secundaria. Creación de libros GeoGebra: aplicaciones y evaluaciones</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Seminario completo sobre la creación de libros avanzados de GeoGebra con aplicaciones educativas y sistemas de evaluación.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">MATEMÁTICAS UNIMILITAR</span>
+                            <a href="https://www.youtube.com/watch?v=xk05xz8HQZM" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="video-card difficulty-advanced bg-white rounded-lg shadow-md p-4 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">AVANZADO</span>
+                            <span class="text-xs text-gray-500">1:34:41</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">Taller: ¿Cómo generar actividades y libros en GeoGebra?</h3>
+                        <p class="text-sm text-gray-600 mb-3 line-clamp-2">Taller completo y avanzado sobre la generación de actividades interactivas y libros educativos con GeoGebra.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">MatEduMat</span>
+                            <a href="https://www.youtube.com/watch?v=pz5G73hZ0xg" target="_blank" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs transition-colors">
+                                <i class="fab fa-youtube mr-1"></i>Ver Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección adicional para Libros -->
+                <div class="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg border-l-4 border-blue-500">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>Características de los Libros de GeoGebra
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-semibold text-blue-600 mb-2">📖 Organización Estructurada</h4>
+                            <p class="text-sm text-gray-600">Los libros permiten organizar múltiples actividades en capítulos y secciones, creando un flujo de aprendizaje lógico.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-semibold text-purple-600 mb-2">🎯 Evaluaciones Integradas</h4>
+                            <p class="text-sm text-gray-600">Incluye herramientas de evaluación automática, seguimiento del progreso y retroalimentación inmediata.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-semibold text-green-600 mb-2">🌐 Compartir y Colaborar</h4>
+                            <p class="text-sm text-gray-600">Los libros pueden compartirse fácilmente con estudiantes y otros educadores, facilitando la colaboración.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-semibold text-red-600 mb-2">📱 Acceso Multiplataforma</h4>
+                            <p class="text-sm text-gray-600">Funciona en computadoras, tablets y móviles, permitiendo aprendizaje flexible y accesible.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Overlay para móvil -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden"></div>
+
+    <!-- Footer -->
+    <footer class="ml-80 bg-gray-800 text-white p-6 mt-12">
+        <div class="max-w-4xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <h3 class="font-bold mb-3">
+                        <i class="fas fa-calculator mr-2"></i>Guía Completa de GeoGebra
+                    </h3>
+                    <p class="text-sm text-gray-400">Plataforma educativa completa para dominar GeoGebra desde lo básico hasta técnicas avanzadas de modelación y construcción.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Secciones Principales</h4>
+                    <ul class="text-sm text-gray-400 space-y-1">
+                        <li>• Vistas Básicas de GeoGebra</li>
+                        <li>• Modelación Matemática y Física</li>
+                        <li>• Curvas Paramétricas Avanzadas</li>
+                        <li>• Creación de Libros Interactivos</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Niveles de Aprendizaje</h4>
+                    <div class="space-y-2">
+                        <div class="flex items-center text-sm">
+                            <span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+                            <span class="text-gray-400">Básico - Fundamentos</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <span class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></span>
+                            <span class="text-gray-400">Intermedio - Aplicaciones</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <span class="w-3 h-3 bg-red-500 rounded-full mr-2"></span>
+                            <span class="text-gray-400">Avanzado - Especialización</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center">
+                <p class="text-sm text-gray-400">
+                    © 2024 Guía Completa de GeoGebra. Contenido educativo curado para el aprendizaje progresivo.
+                    <br>Todos los videos pertenecen a sus respectivos creadores en YouTube.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Variables globales
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+        const toggleSidebar = document.getElementById('toggleSidebar');
+        const overlay = document.getElementById('overlay');
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        // Función para mostrar/ocultar sidebar en móvil
+        function toggleSidebarVisibility() {
+            const isHidden = sidebar.classList.contains('sidebar-hidden');
+            
+            if (isHidden) {
+                sidebar.classList.remove('sidebar-hidden');
+                overlay.classList.remove('hidden');
+                mainContent.classList.remove('content-expanded');
+            } else {
+                sidebar.classList.add('sidebar-hidden');
+                overlay.classList.add('hidden');
+                mainContent.classList.add('content-expanded');
+            }
+        }
+
+        // Función para cambiar de pestaña
+        function switchTab(tabId) {
+            // Ocultar todos los contenidos
+            tabContents.forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Remover clase activa de todos los botones
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Mostrar el contenido seleccionado
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+            }
+
+            // Activar el botón correspondiente
+            const activeButton = document.querySelector(`[data-tab="${tabId}"]`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+
+            // En móvil, cerrar sidebar después de seleccionar
+            if (window.innerWidth < 1024) {
+                setTimeout(() => {
+                    sidebar.classList.add('sidebar-hidden');
+                    overlay.classList.add('hidden');
+                    mainContent.classList.add('content-expanded');
+                }, 300);
+            }
+        }
+
+        // Event listeners
+        toggleSidebar.addEventListener('click', toggleSidebarVisibility);
+        overlay.addEventListener('click', toggleSidebarVisibility);
+
+        // Event listeners para las pestañas
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                switchTab(tabId);
+            });
+        });
+
+        // Responsive behavior
+        function handleResize() {
+            if (window.innerWidth >= 1024) {
+                // Pantalla grande - mostrar sidebar
+                sidebar.classList.remove('sidebar-hidden');
+                overlay.classList.add('hidden');
+                mainContent.classList.remove('content-expanded');
+            } else {
+                // Pantalla pequeña - ocultar sidebar
+                sidebar.classList.add('sidebar-hidden');
+                overlay.classList.add('hidden');
+                mainContent.classList.add('content-expanded');
+            }
+        }
+
+        // Inicialización
+        window.addEventListener('resize', handleResize);
+        window.addEventListener('load', () => {
+            handleResize();
+            // Activar la primera pestaña (Libros con GeoGebra)
+            switchTab('libros-geogebra');
+        });
+
+        // Smooth scrolling para enlaces internos
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Efectos de hover para las cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoCards = document.querySelectorAll('.video-card');
+            videoCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
